@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老魏博客</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        /* 头部导航 */
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #e53935;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+        }
+        .nav-links a:hover {
+            color: #e53935;
+        }
+        .login {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        /* 主体容器 */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        /* 左侧文章列表 */
+        .article-list {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .article-item {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .article-header {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .article-img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+        .article-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .article-title a {
+            color: #333;
+            text-decoration: none;
+        }
+        .article-title a:hover {
+            color: #e53935;
+        }
+        .article-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* 右侧边栏 */
+        .sidebar {
+            flex: 1;
+        }
+        .sidebar-widget {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .widget-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .category-list, .tag-list, .link-list {
+            list-style: none;
+        }
+        .category-list li, .link-list li {
+            margin-bottom: 8px;
+        }
+        .category-list a, .link-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .category-list a:hover, .link-list a:hover {
+            color: #e53935;
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag-list a {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .tag-list a:hover {
+            background-color: #e53935;
+            color: #fff;
+        }
+
+        /* 分页 */
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            color: #666;
+            text-decoration: none;
+        }
+        .pagination a:hover {
+            background-color: #e53935;
+            color: #fff;
+            border-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="nav-container">
+            <div>
+                <a href="#" class="logo">CF Blog</a>
+                <nav class="nav-links">
+                    <a href="#">CF-Blog相关</a>
+                    <a href="#">我的作品</a>
+                    <a href="#">GitHub</a>
+                </nav>
+            </div>
+            <a href="#" class="login">登录</a>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="main-container">
+        <!-- 左侧文章列表 -->
+        <section class="article-list">
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://picsum.photos/200/150?random=1" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="#">新增两个新主题-一个极简风格,一个价值499</a></h2>
+                        <p class="article-desc">使用了新的模板引擎mustache后,主题开发真的很简单,练习了两个新主题 本博客程序的主题开发,已经简单到极致了...</p>
+                        <div class="article-meta">
+                            <span>2021-01-04</span>
+                            <span>875</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://picsum.photos/200/150?random=2" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="#">CF-Blog主题开发文档-史上最简单博客主题开发</a></h2>
+                        <p class="article-desc">由于今天的版本更新,改用模板引擎mustache,主题开发变得非常简单,主题文件只有2个 本博客程序,主题开发只需要两个文件...</p>
+                        <div class="article-meta">
+                            <span>2021-01-03</span>
+                            <span>5517</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://picsum.photos/200/150?random=3" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="#">CF-Blog简单两步,设置代码高亮</a></h2>
+                        <p class="article-desc">简单两步设置代码高亮 同样适用于其他系统 对于cfblog而言,只需要设置两个参数即可,是不是很便捷先来一个效果...</p>
+                        <div class="article-meta">
+                            <span>2020-12-22</span>
+                            <span>5938</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 分页 -->
+            <div class="pagination">
+                <a href="#">下一页 ></a>
+            </div>
+        </section>
+
+        <!-- 右侧边栏 -->
+        <aside class="sidebar">
+            <!-- 分类目录 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">分类目录</h3>
+                <ul class="category-list">
+                    <li><a href="#">CF-Blog相关</a></li>
+                    <li><a href="#">我的作品</a></li>
+                    <li><a href="#">其他分享</a></li>
+                </ul>
+            </div>
+
+            <!-- 标签 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">标签</h3>
+                <ul class="tag-list">
+                    <li><a href="#">cf-blog</a></li>
+                    <li><a href="#">更新日志</a></li>
+                    <li><a href="#">剪切板</a></li>
+                    <li><a href="#">同步</a></li>
+                    <li><a href="#">电脑</a></li>
+                    <li><a href="#">手机</a></li>
+                    <li><a href="#">宝塔</a></li>
+                    <li><a href="#">备份</a></li>
+                    <li><a href="#">谷歌词盘</a></li>
+                    <li><a href="#">抖音</a></li>
+                </ul>
+            </div>
+
+            <!-- 链接 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">链接</h3>
+                <ul class="link-list">
+                    <li><a href="#">SiteMap</a></li>
+                    <li><a href="#">关于我</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>
