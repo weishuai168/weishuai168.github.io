@@ -1,285 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老魏博客</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        /* 头部导航 */
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #e53935;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+        }
+        .nav-links a:hover {
+            color: #e53935;
+        }
+        .login {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+        }
 
-<html>
-  <head>
-    
-<meta charset="utf-8" >
+        /* 主体容器 */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+        }
 
-<title>老魏博客</title>
-<meta name="description" content="分享生活中的喜悦，做自己想做的事。">
+        /* 左侧文章列表 */
+        .article-list {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .article-item {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .article-header {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .article-img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+        .article-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .article-title a {
+            color: #333;
+            text-decoration: none;
+        }
+        .article-title a:hover {
+            color: #e53935;
+        }
+        .article-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+        /* 右侧边栏 */
+        .sidebar {
+            flex: 1;
+        }
+        .sidebar-widget {
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .widget-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .category-list, .tag-list, .link-list {
+            list-style: none;
+        }
+        .category-list li, .link-list li {
+            margin-bottom: 8px;
+        }
+        .category-list a, .link-list a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .category-list a:hover, .link-list a:hover {
+            color: #e53935;
+        }
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag-list a {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        .tag-list a:hover {
+            background-color: #e53935;
+            color: #fff;
+        }
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://weishuai168.github.io/favicon.ico?v=1722586293999">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://weishuai168.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
-
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EL090G3G10"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EL090G3G10');
-</script>
-
-
-
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://weishuai168.github.io">
-        <img class="avatar" src="https://weishuai168.github.io/images/avatar.png?v=1722586293999" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://weishuai168.github.io">
-        <h1 class="site-title">老魏博客</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-      <div class="content-container">
-<section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/202511/1114.html">
-        <h2 class="post-title">在一支股票上反复做T，把成本降到负值</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2025-11-14</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/202511/1114.html">
-        <div class="feature-container" style="background-image: url('https://i.imgs.ovh/2025/11/14/Caeocn.md.png')">
+        /* 分页 */
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            color: #666;
+            text-decoration: none;
+        }
+        .pagination a:hover {
+            background-color: #e53935;
+            color: #fff;
+            border-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="nav-container">
+            <div>
+                <a href="https://weishuai168.github.io/" class="logo">老魏博客</a>
+                <nav class="nav-links">
+                    <a href="#">记录生活</a>
+                    <a href="https://weishuai168.github.io/">我的文章</a>
+                    <a href="#">GitHub</a>
+                </nav>
+            </div>
         </div>
-      </a>
-    
-  </section>
-        
- <section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/shiyiyue.html">
-        <h2 class="post-title">沪深 300ETF 分红之后卖出通常不需要额外扣分红税</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2025-11-13</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/shiyiyue.html">
-        <div class="feature-container" style="background-image: url('https://weishuai168.github.io/post/shiyiyue.html')">
-        </div>
-      </a>
-    
-  </section>       
-        
-<section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/pQWS5gYDH/">
-        <h2 class="post-title">15秒就能【“克隆”任何人】的声音！而且永久免费</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2024-08-01</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/pQWS5gYDH/">
-        <div class="feature-container" style="background-image: url('https://weishuai168.github.io/post-images/pQWS5gYDH.jpg')">
-        </div>
-      </a>
-    
-  </section>
+    </header>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/ae_OX6kJE/">
-        <h2 class="post-title">为什么大多数股票会跟着大盘同涨同跌，都是一个庄家操纵的吗</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2024-07-28</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/ae_OX6kJE/">
-        <div class="feature-container" style="background-image: url('https://weishuai168.github.io/post-images/ae_OX6kJE.jpg')">
-        </div>
-      </a>
-    
-  </section>
+    <!-- 主体内容 -->
+    <main class="main-container">
+        <!-- 左侧文章列表 -->
+        <section class="article-list">
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://i.imgs.ovh/2025/11/14/Caeocn.md.png" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="https://weishuai168.github.io/post/202511/1114.html">在一支股票上反复做T，把成本降到负值</a></h2>
+                        <p class="article-desc">今天早上将昨天尾盘低吸的邮储银行5.86抛掉一半，目前持有邮储5000股下周如有低吸的机会还要继续加仓...</p>
+                        <div class="article-meta">
+                            <span>2025-11-14</span>
+                            <span>875</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/EOdSclI7C/">
-        <h2 class="post-title">虎皮鹦鹉喜欢吃什么食物，怎样教它开口说话</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2024-07-27</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/EOdSclI7C/">
-        <div class="feature-container" style="background-image: url('https://weishuai168.github.io/post-images/EOdSclI7C.jpg')">
-        </div>
-      </a>
-    
-  </section>
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://picsum.photos/200/150?random=2" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="https://weishuai168.github.io/post/shiyiyue.html">沪深 300ETF 分红之后卖出通常不需要额外扣分红税</a></h2>
+                        <p class="article-desc">因为 ETF 基金持有的成分股在分红时，已由上市公司代扣代缴个人所得税。投资者从基金分配中取得的收入...</p>
+                        <div class="article-meta">
+                            <span>2025-11-13</span>
+                            <span>7</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/B4Lw0_PMV/">
-        <h2 class="post-title">我老婆冬天怕冷，夏天不敢吹空调，这是哪里出问题了？</h2>
-      </a>
-      <div class="post-abstract">
-        <p>同一个问题，各大平台智能AI给出的答案大体相同</p>
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://picsum.photos/200/150?random=3" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="https://weishuai168.github.io/post/pQWS5gYDH/">15秒就能【“克隆”任何人】的声音！而且永久免费</a></h2>
+                        <p class="article-desc">顶级中文AI语音技术！如何克隆自己的声音？如何克隆别人的声音？免安装克隆声音 关键还是免费的...</p>
+                        <div class="article-meta">
+                            <span>2024-08-01</span>
+                            <span>8</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://weishuai168.github.io/post-images/ae_OX6kJE.jpg" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="https://weishuai168.github.io/post/ae_OX6kJE/">为什么大多数股票会跟着大盘同涨同跌，都是一个庄家操纵的吗</a></h2>
+                        <p class="article-desc">大多数股票跟着大盘同涨同跌的现象被称为“市场趋势”或“市场情绪”。这是因为市场中的投资者和交易者往往会受到相同的信息和情绪的影响...</p>
+                        <div class="article-meta">
+                            <span>2024-07-28</span>
+                            <span>8</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+                
+            <article class="article-item">
+                <div class="article-header">
+                    <img src="https://weishuai168.github.io/post-images/wlzRi0CzP.jpg" alt="文章缩略图" class="article-img">
+                    <div>
+                        <h2 class="article-title"><a href="https://weishuai168.github.io/post/wlzRi0CzP/">一份价值600的影视解说教程</a></h2>
+                        <p class="article-desc">下载方法风行不限制资源的下载方式，这里提供3种参考方法1、通用网址（所有小程序的影视都可以在这个网址搜索）...</p>
+                        <div class="article-meta">
+                            <span>2024-07-02</span>
+                            <span>8</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- 分页 -->
+            <div class="pagination">
+                <a href="https://weishuai168.github.io/page/2/">下一页 ></a>
+            </div>
+        </section>
 
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2024-07-06</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/B4Lw0_PMV/">
-        <div class="feature-container" style="background-image: url('https://weishuai168.github.io/post-images/B4Lw0_PMV.jpg')">
-        </div>
-      </a>
-    
-  </section>
+        <!-- 右侧边栏 -->
+        <aside class="sidebar">
+            <!-- 分类目录 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">分类目录</h3>
+                <ul class="category-list">
+                    <li><a href="#">老魏相关</a></li>
+                    <li><a href="#">老魏博客</a></li>
+                    <li><a href="#">其他分享</a></li>
+                </ul>
+            </div>
 
-<section class="post-item">
-    <div class="content">
-      <a href="https://weishuai168.github.io/post/k9dtwLQUx/">
-        <h2 class="post-title">iPhone16ProMax</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2024-07-04</span>
-        
-      </div>
-    </div>
-    
-      <a href="https://weishuai168.github.io/post/k9dtwLQUx/">
-        <div class="feature-container" style="background-image: url('https://weishuai168.github.io/post-images/k9dtwLQUx.jpg')">
-        </div>
-      </a>
-    
-  </section>
+            <!-- 标签 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">标签</h3>
+                <ul class="tag-list">
+                    <li><a href="#">老魏-blog</a></li>
+                    <li><a href="#">炒股教程</a></li>
+                    <li><a href="#">炒股战法</a></li>
+                    <li><a href="#">量化学习</a></li>
+                    <li><a href="#">电脑软件</a></li>
+                    <li><a href="#">手机</a></li>
+                    <li><a href="#">自媒体</a></li>
+                    <li><a href="#">分享方法</a></li>
+                    <li><a href="#">建站教程</a></li>
+                    <li><a href="#">抖音</a></li>
+                </ul>
+            </div>
 
-<div class="pagination-container">
-  
-  
-    <a href="https://weishuai168.github.io/page/2" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
-  
-</div>
-
-
-      </div>
-
-      <div class="site-footer">
-  <div class="slogan">分享生活中的喜悦，做自己想做的事。</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://weishuai168.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
+            <!-- 链接 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">友情链接</h3>
+                <ul class="link-list">
+                    <li><a href="#">老魏博客</a></li>
+                    <li><a href="/">关于我</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+</body>
 </html>
-
-
